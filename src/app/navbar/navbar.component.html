@@ -1,12 +1,20 @@
 <div class="navbar">
-   
     <ul>
-        <li>Men</li>
-        <li>Women</li>
-        <li>Kids</li>
-        <li>Contact Us</li>
-        <li class="cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-        </li>
+      <li>Men</li>
+      <li>Women</li>
+      <li>Kids</li>
+      <li>Contact Us</li>
+      <li class="cart-icon" (click)="toggleCartPopup()">
+        <i class="fas fa-shopping-cart"></i>
+      </li>
     </ul>
-</div>
+  
+    <div *ngIf="showCartPopup" class="cart-popup">
+      <h3>Your Cart</h3>
+      <ul>
+        <li *ngFor="let item of cartItems">{{ item.title }} - {{ item.price }}</li>
+      </ul>
+      <button (click)="showCartPopup = false">Close</button>
+    </div>
+  </div>
+  

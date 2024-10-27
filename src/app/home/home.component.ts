@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-home',
@@ -66,4 +67,13 @@ export class HomeComponent {
 
 
   ];
+  constructor(private cartservice:CartService) { }
+
+  addItemToCart(item:any) {
+    this.cartservice.addToCart(item);
+    alert('item added to the cart')
+  }
+  viewCartItems(){
+    console.log(this.cartservice.getCartItems());
+  }
 }
