@@ -7,6 +7,15 @@ import { CartService } from '../cart.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  constructor(private cartservice:CartService) { }
+
+  addItemToCart(item:any) {
+    this.cartservice.addToCart(item);
+    alert('item added to the cart')
+  }
+  viewCartItems(){
+    console.log(this.cartservice.getCartItems());
+  }
   items = [
     {
       image: '../../assets/Images/Products/image1.jpg',  
@@ -67,13 +76,5 @@ export class HomeComponent {
 
 
   ];
-  constructor(private cartservice:CartService) { }
-
-  addItemToCart(item:any) {
-    this.cartservice.addToCart(item);
-    alert('item added to the cart')
-  }
-  viewCartItems(){
-    console.log(this.cartservice.getCartItems());
-  }
+ 
 }

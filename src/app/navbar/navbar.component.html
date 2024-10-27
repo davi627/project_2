@@ -12,9 +12,12 @@
     <div *ngIf="showCartPopup" class="cart-popup">
       <h3>Your Cart</h3>
       <ul>
-        <li *ngFor="let item of cartItems">{{ item.title }} - {{ item.price }}</li>
+        <li *ngFor="let item of cartItems; let i = index">
+          {{ item.title }} - {{ item.price }}
+          <button class="delete-btn" (click)="removeFromCart(i)">Delete</button>
+        </li>
       </ul>
-      <button (click)="showCartPopup = false">Close</button>
+      <button (click)="toggleCartPopup()">Close</button>
     </div>
   </div>
   
